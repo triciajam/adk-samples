@@ -48,7 +48,7 @@ Android 16 is now rolling out on Pixel devices, with a fresh design and new feat
 The primary agent in this example is the `dynamic_parallel_task_agent`. It is designed to solve a common problem: how to process a list of tasks where the number of tasks is unknown beforehand and may be larger than the number of parallel workers you can or want to run.
 
 The agent pipeline is as follows:
-1.  **Task Input**: An `LlmAgent` (`task_input_agent`) prompts the user for input and processes it into a list of strings (words).  This agent is just one example way to get a list of tasks into the session state.
+1.  **Task Input**: An `LlmAgent` (`task_input_agent`) prompts the user for input and processes it into a list of strings (words).  This agent is just one example way to get a dynamic list of "tasks" into the session state.
 2.  **Task Planning**: A `TaskPlannerAgent` takes this list and initializes a task queue in the session state.
 3.  **Batch Processing Loop**: A `LoopAgent` (`task_batch_manager`) repeatedly executes a batch processing cycle until the task queue is empty.
     - **Termination Check**: A `TerminationChecker` agent checks if the queue is empty and stops the loop if it is.
@@ -82,7 +82,7 @@ In summary, this example provides a blueprint for building scalable, resource-aw
 
 #### Validation error
 
-Sometimes task_input_agent does not return the array in the correct format.  In this case, the UI will say 'No tasks to process' and you will see `{"error": "1 validation error for Event}`. Just try again with another phrase.
+Sometimes `task_input_agent` does not return the array in the correct format.  In this case, the UI will say 'No tasks to process' and you will see `{"error": "1 validation error for Event}`. Just try again with another phrase. (Note that `task_input_agent` is not part of the pattern itself - it is just a quick way to get a dynamic list of strings into session state so that they can be processed.)
 
 #### Failed to detach context
 
