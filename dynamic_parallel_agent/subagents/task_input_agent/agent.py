@@ -14,7 +14,7 @@ task_input_agent = LlmAgent(
     Your *final and only* output should be the list of strings formatted as a comma-seperated array.
     For example, if the user enters **hi? how are you doing today**
     Your response should be **["hi", "how", "are", "you", "doing", "today"]**
-    Do not add any conversational fluff, greetings, or any other text to your final response. You will save this result in the output key
+    Do not add any conversational fluff, greetings, or any other text to your final response.
     """,
     description="Asks the user for a comma seperated list of strings, and returns it as an array.",
     output_key="task_list_input",
