@@ -72,9 +72,20 @@ adk web
 
 Select `dynamic_parallel_agent_ex` in the top left of the web UI.
 
-Type any text as input and the agent will calculate the total number of characters (not including spaces) in those words.
+Type any text as input and the agent will calculate the total number of characters (not including spaces) in those words. Here's some text to copy:
+
+```bash
+Android 16 is now rolling out on Pixel devices, with a fresh design and new features like live delivery and ride-share updates
+```
+
 
 ## Known Issues
+
+#### Validation error
+
+Sometimes task_input_agent does not return the array in the correct format.  In this case, the UI will say 'No tasks to process' and you will see `{"error": "1 validation error for Event}`. Just try again with another phrase.
+
+#### Failed to detach context
 
 The agent runs successfully and completes the tasks using `adk web`. However, there is one "Failed to detach context" opentelemmetry error in the logs for each worker.
 These errors do not stop or interrupt agent execution or the web interface, but need to be resolved. Possibly related to this [open issue](https://github.com/open-telemetry/opentelemetry-python/issues/2606).
