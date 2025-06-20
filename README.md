@@ -1,3 +1,3 @@
 # ADK Samples
 
-* [dynamic_parallel_agent](./dynamic_parallel_agent/README.md)
+* [dynamic_parallel_agent_ex](./dynamic_parallel_agent_ex/README.md)

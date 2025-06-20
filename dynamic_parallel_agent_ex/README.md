@@ -68,7 +68,7 @@ You can run the agent using the ADK CLI. From the repo's root directory, the fol
 adk web
 ```
 
-Select `dynamic_parallel_task_agent` in the top left of the web UI.
+Select `dynamic_parallel_agent_ex` in the top left of the web UI.
 
 Type any text as input and the agent will calculate the total number of characters (not including spaces) in those words.
 

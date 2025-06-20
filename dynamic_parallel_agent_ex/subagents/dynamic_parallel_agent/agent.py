@@ -321,8 +321,8 @@ task_batch_manager = LoopAgent(
 )
 
 # 4. Create the final SequentialAgent that defines the entire pipeline.
-dynamic_parallel_task_agent = SequentialAgent(
-    name="dynamic_parallel_task_agent",
+dynamic_parallel_agent = SequentialAgent(
+    name="dynamic_parallel_agent",
     sub_agents=[
         # a. Plan the tasks from the initial session key.
         TaskPlannerAgent(
