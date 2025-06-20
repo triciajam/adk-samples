@@ -39,6 +39,8 @@ In summary, this example provides a blueprint for building scalable, resource-aw
 
 ## How to Run
 
+Complete all these steps from the root directory of the repo.
+
 ### 1. Setup
 
 First, create a virtual environment and install the required dependencies:
@@ -51,7 +53,7 @@ pip install -r requirements.txt
 
 ### 2. Configure Environment Variables
 
-This agent uses the Gemini API. You will need to set your Google API key as an environment variable. Create a `.env` file in the repo's root directory:
+This agent uses the Gemini API. You will need to set your Google API key as an environment variable. Create a `.env` file:
 
 **.env**
 ```
@@ -62,7 +64,7 @@ Replace `"YOUR_API_KEY_HERE"` with your actual Google API key.
 
 ### 3. Run the Agent
 
-You can run the agent using the ADK CLI. From the repo's root directory, the following command will start a web-based development UI where you can interact with the agent:
+You can run the agent using the ADK CLI. Running the following command will start a web-based development UI where you can interact with the agent:
 
 ```bash
 adk web
