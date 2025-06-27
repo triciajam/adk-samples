@@ -11,7 +11,7 @@ root_agent = SequentialAgent(
         dynamic_parallel_agent,
     ],
     description=(
-        "An agent that counts the number of non-space characters in a user's input by counting characters "
-        "in each word in parallel (using dynamic_parallel_task_agent) and then totaling up the results for all words."
+        "A toy agent that counts the number of non-space characters in each word in a user's input "
+        "in parallel (using dynamic_parallel_agent), and then totals up the character count for the entire input."
     ),
 )

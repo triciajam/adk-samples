@@ -16,6 +16,6 @@ task_input_agent = LlmAgent(
     Your response should be **["hi?", "how", "are", "you", "doing", "today"]**
     Do not add any conversational fluff, greetings, or any other text to your final response.
     """,
-    description="Asks the user for a comma seperated list of strings, and returns it as an array.",
+    description="Returns all user input as a comma seperated list of strings.",
     output_key="task_list_input",
 )

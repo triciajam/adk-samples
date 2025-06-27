@@ -35,7 +35,7 @@ You can run the agent using the ADK CLI. Running the following command will star
 adk web
 ```
 
-Select `dynamic_parallel_agent_ex` in the top left of the web UI.
+Select `dynamic_parallel_llmagent_ex` in the top left of the web UI.
 
 Type any text as input and the agent will calculate the total number of characters (not including spaces) in those words. Here's some text to copy:
 
@@ -45,7 +45,7 @@ Android 16 is now rolling out on Pixel devices, with a fresh design and new feat
 
 ## Core Functionality
 
-The primary agent in this example is the [`dynamic_parallel_task_agent`](subagents/dynamic_parallel_agent/agent.py), which uses a `LoopAgent` to wrap a `ParallelAgent` and execute a batch of tasks (`WorkerAgent`) in parallel from a queue. It is designed to solve the problem: how to process a list of tasks where the number of tasks is unknown beforehand and may be larger than the number of parallel workers you can or want to run.
+The primary agent in this example is the [`dynamic_parallel_llmagent`](subagents/dynamic_parallel_llmagent/agent.py), which uses a `LoopAgent` to wrap a `ParallelAgent` and execute a batch of tasks (`WorkerLlmAgent`) in parallel from a queue. It is designed to solve the problem: how to process a list of tasks where the number of tasks is unknown beforehand and may be larger than the number of parallel workers you can or want to run.
 
 The agent pipeline is as follows:
 1.  **Task Input**: An `LlmAgent` (`task_input_agent`) prompts the user for input and processes it into a list of strings (words).  This agent is just one example way to get a dynamic list of "tasks" into the session state.
@@ -53,14 +53,14 @@ The agent pipeline is as follows:
 3.  **Batch Processing Loop**: A `LoopAgent` (`task_batch_manager`) repeatedly executes a batch processing cycle until the task queue is empty.
     - **Termination Check**: A `TerminationChecker` agent checks if the queue is empty and stops the loop if it is.
     - **Task Distribution**: A `TaskDistributorAgent` takes a "batch" of tasks from the queue (up to the maximum number of workers) and assigns them to the worker agents.
-    - **Parallel Execution**: A `ParallelAgent` (`worker_pool`) runs a fixed number of `WorkerAgent`s concurrently. Each worker picks up its assigned task, processes it (in this case, counts the characters), and writes the result back to the session state.
+    - **Parallel Execution**: A `ParallelAgent` (`worker_pool`) runs a fixed number of `WorkerLlmAgent`s concurrently. Each worker picks up its assigned task, processes it (in this case, gets the definition of the word), and writes the result back to the session state.
 4.  **Result Aggregation**: Once the loop terminates, a `TaskAggregatorAgent` collects all the individual results and computes a final summary (the total character count).
 
 ## Why is this pattern needed?
 
 The base Agent Development Kit (ADK) provides powerful components for building agentic workflows, including the `ParallelAgent` for concurrent execution. However, the `ParallelAgent` is designed to run a *predefined, static list* of sub-agents. It does not natively support scenarios where you have a *dynamic list* of work items that you want to distribute among a smaller, fixed-size pool of workers.
 
-This `dynamic_parallel_agent` pattern addresses that gap by providing a reusable architecture for **dynamic task distribution and batch processing**.
+This `dynamic_parallel_llmagent` pattern addresses that gap by providing a reusable architecture for **dynamic task distribution and batch processing**.
 
 ### Limitations of Base ADK Components Addressed:
 
