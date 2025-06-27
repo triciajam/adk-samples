@@ -1,6 +1,6 @@
-# Dynamic Parallel Agent Example
+# Dynamic Parallel LLM Agent Example
 
-This example demonstrates a potential agent pattern for processing a dynamic list of tasks in parallel using a fixed-size pool of worker agents. The root agent orchestrates a pipeline that first asks the user for text input, splits that input into a list of words, and then uses the dynamic parallel pattern to count the characters of each word concurrently. Here's my understanding on [why this is needed](#why-is-this-pattern-needed).
+This example demonstrates a potential agent pattern for processing a dynamic list of tasks in parallel using a fixed-size pool of worker agents. The root agent orchestrates a pipeline that first asks the user for text input, splits that input into a list of words, and then uses the dynamic parallel pattern to get the definition of each word concurrently. Here's my understanding on [why this is needed](#why-is-this-pattern-needed).
 
 ## How to Run
 
@@ -37,7 +37,7 @@ adk web
 
 Select `dynamic_parallel_llmagent_ex` in the top left of the web UI.
 
-Type any text as input and the agent will calculate the total number of characters (not including spaces) in those words. Here's some text to copy:
+Type any text as input and the LLM agent will get the definition of each word. Here's some text to copy:
 
 ```bash
 Android 16 is now rolling out on Pixel devices, with a fresh design and new features like live delivery and ride-share updates
